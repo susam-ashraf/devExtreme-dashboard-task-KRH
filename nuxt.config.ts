@@ -17,7 +17,7 @@ export default defineNuxtConfig({
   build: {
     transpile: ["devextreme-vue"],
   },
-  modules: ["@nuxtjs/tailwindcss", "@pinia/nuxt", "@nuxtjs/i18n"],
+  modules: ["@nuxtjs/tailwindcss", "@pinia/nuxt", "@nuxtjs/i18n", "@tailvue/nuxt"],
   runtimeConfig: {
     public: {
       ...publicRuntimeConfig,

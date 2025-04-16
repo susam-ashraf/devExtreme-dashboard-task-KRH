@@ -1,10 +1,6 @@
 <template>
   <div>
-    <!-- <DashboardDevExtreameDataGrid /> -->
-
     <DashboardDevExtreameTabsTabPanel />
-
-    <!-- <DashboardDevExtreameSheetJSVueAoO /> -->
   </div>
 </template>
 

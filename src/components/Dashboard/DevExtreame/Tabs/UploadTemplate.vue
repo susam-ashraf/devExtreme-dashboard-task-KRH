@@ -6,6 +6,8 @@
           >Upload file</label
         >
         <input
+          @change="handleFileUpload"
+          accept=".xlsx, .xls"
           class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
           id="file_input"
           type="file"
@@ -22,7 +24,39 @@
     </div>
   </div>
 </template>
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import type { EmployeeDataType } from "@/types/dataTypes";
+import { ref } from "vue";
+import { read, utils } from "xlsx";
+
+interface EmpDataType extends EmployeeDataType {
+  Index: number;
+}
+
+const pres = ref<EmpDataType[]>([]);
+
+const handleFileUpload = async (event: Event) => {
+  const input = event.target as HTMLInputElement;
+
+  if (!input.files?.length) return;
+
+  const file = input.files[0];
+
+  const reader = new FileReader();
+
+  reader.onload = (e) => {
+    const data = new Uint8Array(e.target?.result as ArrayBuffer);
+    const wb = read(data, { type: "array" });
+
+    const ws = wb.Sheets[wb.SheetNames[0]];
+    const jsonData: EmpDataType[] = utils.sheet_to_json<EmpDataType>(ws);
+    // console.log("jsonData---", jsonData);
+    pres.value = jsonData;
+  };
+
+  reader.readAsArrayBuffer(file);
+};
+</script>
 <style>
 .tabpanel-item {
   height: 200px;
