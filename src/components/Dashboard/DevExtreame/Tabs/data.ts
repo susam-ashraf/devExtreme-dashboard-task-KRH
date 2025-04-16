@@ -23,7 +23,7 @@ export const multiViewItems = [
   },
   {
     ID: 3,
-    CompanyName: "Information Cancel and Delete",
+    CompanyName: "Information Validation",
     Address: "1000 Nicllet Mall",
     City: "Minneapolis",
     State: "Minnesota",
