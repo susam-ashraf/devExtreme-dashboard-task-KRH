@@ -1,0 +1,16 @@
+{
+  "welcome": "Selamat datang ke laman web kami!",
+  "description": "Ini adalah halaman utama.",
+  "title_table_empId": "Employee ID",
+  "title_table_empName": "Employee Name",
+  "title_table_typeReason": "Type of Reason",
+  "title_table_reason": "Reason",
+  "title_table_dateEntry": "Date & Time of Entry to Work",
+  "title_table_dateReturn": "Return To work Time",
+  "title_table_action": "Action",
+  "search_employee_button": "Search",
+  "add_record_button": "Add Record",
+  "download_template_button": "Download Template",
+  "upload_template_button": "Upload Template",
+  "delete_template_button": "Delete Template"
+}
