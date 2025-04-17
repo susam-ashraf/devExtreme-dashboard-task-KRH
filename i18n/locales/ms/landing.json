@@ -12,5 +12,6 @@
   "add_record_button": "Add Record",
   "download_template_button": "Download Template",
   "upload_template_button": "Upload Template",
-  "delete_template_button": "Delete Template"
+  "delete_template_button": "Delete Template",
+  "save_button": "Save"
 }

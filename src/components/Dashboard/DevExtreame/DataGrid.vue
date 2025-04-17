@@ -1,29 +1,6 @@
 <template>
   <div>
     <div class="relative overflow-x-auto mt-14">
-      <!-- <form class="max-w-4xl mx-auto grid grid-cols-2 gap-x-6 gap-y-2 sm:grid-cols-2 mb-10 shadow-xl p-10">
-        <div class="mb-5">
-          <label for="id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">{{
-            $t("title_table_empId")
-            }}</label>
-          <input type="text" v-model="state.search" id="empId"
-            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            placeholder="Enter Employee Id" required />
-        </div>
-        <div class="mb-5">
-          <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">{{
-            $t("title_table_empName")
-            }}</label>
-          <input type="text" v-model="state.searchName" id="empName"
-            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            placeholder="Enter Employee Name" required />
-        </div>
-        <button type="button"
-          class="mr-20 text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
-          {{ $t("search_employee_button") }}
-        </button>
-      </form> -->
-
       <!-- Attendance modal -->
       <DashboardDevExtreameModal />
 
@@ -116,11 +93,66 @@
                     clip-rule="evenodd"
                   />
                 </svg>
+                <div v-if="index == 1 || index == 3" class="ml-5">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    class="text-red-700 hover:text-white border border-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 rounded-lg size-6"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M9.401 3.003c1.155-2 4.043-2 5.197 0l7.355 12.748c1.154 2-.29 4.5-2.599 4.5H4.645c-2.309 0-3.752-2.5-2.598-4.5L9.4 3.003ZM12 8.25a.75.75 0 0 1 .75.75v3.75a.75.75 0 0 1-1.5 0V9a.75.75 0 0 1 .75-.75Zm0 8.25a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Z"
+                      clip-rule="evenodd"
+                    />
+                  </svg>
+                </div>
               </div>
             </td>
           </tr>
         </tbody>
       </table>
+
+      <h1 class="mt-6 mb-6 pt-6 mx-auto text-center font-bold">Verification Status :</h1>
+      <div class="mx-auto max-w-sm text-center flex flex-wrap justify-center">
+        <div class="flex items-center mr-4 mb-4">
+          <input id="radio1" type="radio" name="radio" class="hidden" checked />
+          <label for="radio1" class="flex items-center cursor-pointer">
+            <span class="w-4 h-4 inline-block mr-1 rounded-full border border-grey"></span>
+            Legitimate</label
+          >
+        </div>
+
+        <div class="flex items-center mr-4 mb-4">
+          <input id="radio2" type="radio" name="radio" class="hidden" />
+          <label for="radio2" class="flex items-center cursor-pointer">
+            <span class="w-4 h-4 inline-block mr-1 rounded-full border border-grey"></span>
+            Invalid</label
+          >
+        </div>
+      </div>
+
+      <div class="mt-5 col-span-full mx-auto max-w-xl text-center justify-center">
+        <div>
+          <label for="about" class="block text-sm/6 font-medium text-gray-900">Notes</label>
+          <div class="mt-2 border-2">
+            <textarea
+              name="about"
+              id="about"
+              rows="3"
+              class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+            />
+          </div>
+        </div>
+        <div class="sm:col-span-3 max-w-xl mx-auto mt-5">
+          <button
+            type="button"
+            class="max-w-xl mx-auto text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
+          >
+            {{ $t("save_button") }}
+          </button>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -196,5 +228,29 @@ function toggleModal() {
 .option > .dx-selectbox {
   display: inline-block;
   vertical-align: middle;
+}
+
+input[type="radio"] + label span {
+  transition:
+    background 0.2s,
+    transform 0.2s;
+}
+
+input[type="radio"] + label span:hover,
+input[type="radio"] + label:hover span {
+  transform: scale(1.2);
+}
+
+input[type="radio"]:checked + label span {
+  background-color: #3490dc;
+  box-shadow: 0px 0px 0px 2px white inset;
+}
+
+input[type="radio"]:checked + label {
+  color: #3490dc;
+}
+
+input[type="radio"] + label {
+  font-size: 16px;
 }
 </style>

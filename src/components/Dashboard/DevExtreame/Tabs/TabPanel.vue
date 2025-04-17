@@ -1,7 +1,7 @@
 <template>
   <div>
     <DxTabPanel
-      :height="760"
+      :height="960"
       :data-source="companies"
       v-model:selected-index="selectedIndex"
       :loop="loop"
